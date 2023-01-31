@@ -1,11 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { TableHead } from "./Components/TableHead";
 
 function App() {
   return (
     <div className="App">
-
+      <h1>To Do App</h1>
+      <TableHead />
     </div>
+
   );
 }
 
