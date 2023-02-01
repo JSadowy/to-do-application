@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const CreateNewTask = (props) => {
+export const CreateNewTask = (handleCreateNewTask) => {
 
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
@@ -13,19 +13,26 @@ export const CreateNewTask = (props) => {
         setDate(event.target.value)
     }
 
-    const clearState = () => {
-        setName('');
-        setDate('');
-    }
-
     const addNewTask = (event) => {
         event.preventDefault();
-        const val = {
-            name,
-            date,
-        };
-        props.func(val)
-        clearState()
+        if (!name) {
+            return;
+        } else if (!date) {
+            return;
+        } else if (!name && !date) {
+            return;
+        }
+
+
+        handleCreateNewTask(name, date);
+
+        const setNewTask = ({ setDate }, { setName }) => {
+            return (
+                setDate([]),
+                setName([])
+            )
+        }
+        setNewTask();
     }
     return (
         <form>
